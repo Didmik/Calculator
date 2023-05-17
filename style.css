@@ -14,5 +14,14 @@ h1 {
     border: solid 2px black;
     width: 550px;
     height: 700px;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
 
+button {
+    padding: 60px;
+    display: flex;
+    flex: 1;
+    
 }
