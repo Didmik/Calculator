@@ -7,21 +7,56 @@ body {
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .container {
     border: solid 2px black;
     width: 550px;
     height: 700px;
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-}
+    
+ }
 
 button {
-    padding: 60px;
-    display: flex;
-    flex: 1;
+    padding: 40px;
     
 }
+
+.display {
+   border: solid 2px black;
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+   margin: 60px;
+}
+
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+
+
+}
+
+.operators {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+
+}
+
+
+.otherButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    
+}
+
+
+
+
+

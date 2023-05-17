@@ -4,7 +4,7 @@ let num2 = 0;
 
 
 function operate(num, operator, num2) {
-
+   operate
 }
 
 
