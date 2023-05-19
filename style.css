@@ -6,21 +6,24 @@ body {
     align-items: center;
 }
 
+
 h1 {
     margin-bottom: 30px;
 }
+
 
 .container {
     border: solid 2px black;
     width: 550px;
     height: 700px;
     
- }
+}
 
 button {
     padding: 40px;
     
 }
+
 
 .display {
    border: solid 2px black;
@@ -30,15 +33,15 @@ button {
    margin: 60px;
 }
 
+
 .numbers {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
     margin-bottom: 30px;
-
-
 }
+
 
 .operators {
     display: flex;
