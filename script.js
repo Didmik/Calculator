@@ -2,6 +2,7 @@ let num = "";
 let num2 = "";
 let displayValue = "";
 let currentValue = "";
+let operator = "";
 
 
 // Display
@@ -22,6 +23,7 @@ let clear = document.querySelector(".clear");
 let equals = document.querySelector(".equals");
 
 
+
 function start() {
 buttons.forEach(button => {
   button.addEventListener('click', () => {
@@ -35,38 +37,49 @@ function handleButtons(button) {
   if (button.classList.contains('number')) {
     //display.textContent = "";
     //console.log (display.textContent += button.value);
+    if (num === "") { 
    console.log (display.textContent += button.value ) ;
+    }
+
+   else if (num !== "" && (currentValue === "+" || currentValue === "-" || 
+   currentValue === "*" || currentValue === "/" )) {
+    console.log(currentValue);  
+    
+    //display.textContent.slice(0, -1);
+   // num2 = display.textContent;
+    num2 += button.value;
+    
+    console.log (num2);
+    display.textContent += button.value;
+    //console.log (num);
+   }
   } 
 
   else if (button.classList.contains('operator')) {
     if (num === "" && num2 === "" && displayValue === "" && currentValue === "") {
-     // num = displayValue;
-      num = display.textContent
-      currentValue = button.value;
+      //num = displayValue
+     num = display.textContent; // forrige talls verdi
+     console.log (num);
+     currentValue = button.value; // operator verdi
       //displayValue += button.value;
       //display.textContent = displayValue;
-      display.textContent += button.value
-    } else if (displayValue !== "" && num !== "" && currentValue !== "") {
+      display.textContent = button.value;
+      
+     // display.textContent += button.value
+    } else if (currentValue === "+" || currentValue === "-" || 
+    currentValue === "*" || currentValue === "/" ) {  //if (num !== "" ) {
       //num2 = displayValue;
+      console.log(currentValue);
       num2 = display.textContent;
-      console.log (display.textContent.slice(0, -1) );
+      console.log (num2);
+      //console.log (display.textContent.slice(0, -1) );
       operate(num, num2, currentValue);
       currentValue = button.value;
       //num = displayValue;
       displayValue += button.value;
       display.textContent = displayValue;
       //display.textContent = button.value;
-    } /*else if (displayValue === "" && num !== "" && currentValue === "") {
-      currentValue = button.value;
-      num2 = displayValue;
-      displayValue += button.value
-      display.textContent = displayValue;
-    } else if (displayValue !== "" && num !== "" && currentValue === "") {
-      num = displayValue;
-      currentValue = button.value;
-      displayValue += button.value;
-      display.textContent = displayValue;
-    } */
+    }
     // console.log( display.textContent = button.value  );
      //currentOperation = button.value;
      //console.log (currentOperation);
@@ -75,15 +88,18 @@ function handleButtons(button) {
       //displayInput('clear', 0);
     
   } else if (button.classList.contains('equals')) {
-    if (displayValue !== "" && num !== "") {
+
+    console.log (operate(num, num2, currentValue) );
+   /* if (displayValue !== "" && num !== "") {
       num2 = displayValue;
       console.log (operate(num, num2, currentValue) );
     }
   } 
    else if (button.classList.contains('clear')) {
     
-  }
+  } */
 } 
+ }
 
 
 
