@@ -1,8 +1,8 @@
+
 let num = "";
 let num2 = "";
-let displayValue = "";
-let currentValue = "";
 let operator = "";
+let result = "";  
 
 
 // Display
@@ -14,13 +14,9 @@ let display = document.querySelector(".display");
 
 let buttons = document.querySelectorAll("button");
 
-let numbers = document.querySelectorAll(".number");
+//let clear = document.querySelector(".clear");
 
-let operators = document.querySelectorAll(".operator");
-
-let clear = document.querySelector(".clear");
-
-let equals = document.querySelector(".equals");
+//let equals = document.querySelector(".equals");
 
 
 
@@ -33,130 +29,143 @@ buttons.forEach(button => {
 }
 
 
-function handleButtons(button) {
+/*function handleButtons(button) {
+
   if (button.classList.contains('number')) {
-    //display.textContent = "";
-    //console.log (display.textContent += button.value);
     if (num === "") { 
-   console.log (display.textContent += button.value ) ;
+      currentValue += button.value;
+     // console.log (currentValue);
+   console.log (display.textContent += button.value) ;
     }
 
-   else if (num !== "" && (currentValue === "+" || currentValue === "-" || 
-   currentValue === "*" || currentValue === "/" )) {
-    console.log(currentValue);  
+   else if (num !== "" && num2 === "" && (operator === "+" || operator === "-" || 
+   operator === "*" || operator === "/" )) {
+    console.log(operator);  
     
     //display.textContent.slice(0, -1);
-   // num2 = display.textContent;
+    //num2 = display.textContent;
+    num2 = button.value;
+
+    //display.textContent = num2;
+    
+    console.log (num2);
+
+    result = operate(num, num2, operator);
+
+    display.textContent = `${num2}` + " = " + `${result}`;
+    //display.textContent = result;
+
+    //console.log(result);
+
+    //console.log(currentValue); 
+    
+   }
+
+
+   else if (num !== "" && num2 !== "" && (operator === "+" || operator === "-" || 
+   operator === "*" || operator === "/" )) {
+    console.log(operator);  
+    
+    //display.textContent.slice(0, -1);
+    //num2 = display.textContent;
     num2 += button.value;
     
     console.log (num2);
-    display.textContent += button.value;
-    //console.log (num);
+
+    result = operate(num, num2, operator);
+
+    display.textContent = `${num2}` + " = " + `${result}`; 
    }
-  } 
 
-  else if (button.classList.contains('operator')) {
-    if (num === "" && num2 === "" && displayValue === "" && currentValue === "") {
-      //num = displayValue
-     num = display.textContent; // forrige talls verdi
-     console.log (num);
-     currentValue = button.value; // operator verdi
-      //displayValue += button.value;
-      //display.textContent = displayValue;
-      display.textContent = button.value;
-      
-     // display.textContent += button.value
-    } else if (currentValue === "+" || currentValue === "-" || 
-    currentValue === "*" || currentValue === "/" ) {  //if (num !== "" ) {
-      //num2 = displayValue;
-      console.log(currentValue);
-      num2 = display.textContent;
-      console.log (num2);
-      //console.log (display.textContent.slice(0, -1) );
-      operate(num, num2, currentValue);
-      currentValue = button.value;
-      //num = displayValue;
-      displayValue += button.value;
-      display.textContent = displayValue;
-      //display.textContent = button.value;
-    }
-    // console.log( display.textContent = button.value  );
-     //currentOperation = button.value;
-     //console.log (currentOperation);
-      //num2 = display.textContent;
-      //display.textContent = operate(num, num2, currentOperation);
-      //displayInput('clear', 0);
-    
-  } else if (button.classList.contains('equals')) {
-
-    console.log (operate(num, num2, currentValue) );
-   /* if (displayValue !== "" && num !== "") {
-      num2 = displayValue;
-      console.log (operate(num, num2, currentValue) );
-    }
-  } 
-   else if (button.classList.contains('clear')) {
-    
-  } */
-} 
  }
 
+  else if (button.classList.contains('operator')) {
 
+    if (num === "" && num2 === "" && operator === "") {
+      num = display.textContent; // forrige talls verdi
+      console.log (num);
+      operator = button.value; // operator verdi
+      display.textContent = button.value;
+      }
+       
 
-
-/*numbers.forEach(numb => {
-  numb.addEventListener('click', function(e) {
-    if (operator === "") { // Read first number if no operator set yet
-      num += e.target.innerText;
-      //num.slice(1);
-      display.textContent = numb.value;
-      //displayValue.push(num)
-      console.log(num)
+    else if (num !== "" && num2 !== "" && operator !== "") {
+      num = result; // forrige talls verdi
+      console.log (num);
+      operator = button.value; // operator verdi
+      console.log (operator);
+      display.textContent = `${num}` + " " + `${operator}`; 
     } 
-    else { // Read second number
-      num2 += e.target.innerText;
-      display.textContent = numb.value;
-     // displayValue.push(num);
-      console.log(num2)
-    } 
-  })
-})
+   }
+    
+  
+  else if (button.classList.contains('equals')) {
 
-operators.forEach(oper => {
-  oper.addEventListener("click", e => {
-      operator = e.target.innerText;
-      display.textContent = oper.value;
-      console.log(operator)
-      // If equals operator, perform operation
+    console.log (operate(num, num2, operator) );
+    display.textContent = operate(num, num2, operator);
+    disableButtons();
+  } 
 
-      switch (operator) { // Calculate and print output
-        case "+":
-            console.log(num + num2);
-            //displayValue.push(operator);
-            break;
+   else if (button.classList.contains('clear')) {
+    display.textContent = "";
+    num = "";
+    num2 = "";
+    operator = "";
+    activateButtons();
+  } 
+} */
 
-        case "-":
-            console.log(num - num2);
-            break;
 
-        case "*":
-            console.log(parseInt(num) * parseInt(num2));
-            break;
-        
-        case "/":
-            console.log(parseInt(num) / parseInt(num2));
-            break;
 
-        default:
-            break;
+function handleButtons(button) {
+
+  if (button.classList.contains('number')) {
+    if (operator === "") {
+      num += button.value;
+    } else {
+      num2 += button.value;
     }
-  });
-});   */
+    display.textContent += button.value;
+  } 
+  
+  else if (button.classList.contains('operator')) {
+    if (num !== "" && num2 !== "") {
+      result = operate(num, num2, operator);
+      display.textContent = `${result} ${button.value}`;
+      num = result;
+      num2 = "";
+    } else {
+      operator = button.value;
+      display.textContent += ` ${operator} `;
+    }
+  } 
+  
+  else if (button.classList.contains('equals')) {
+    if (num !== "" && num2 !== "" && operator !== "") {
+      result = operate(num, num2, operator);
+      display.textContent = result;
+      num = result;
+      num2 = "";
+      operator = "";
+    }
+  } else if (button.classList.contains('clear')) {
+    display.textContent = "";
+    num = "";
+    num2 = "";
+    operator = "";
+  }
+}
 
 
 
 
+function roundResult(numb) {
+  return Math.round(numb * 1000) / 1000
+}
 
+
+
+/*
 function disableButtons() {
   buttons.forEach(cli => {
     if (cli !== clear) { 
@@ -170,36 +179,32 @@ function activateButtons() {
   buttons.forEach(cli => {
     cli.disabled = false;
   })
-}
+} */
 
 
 
 // clear function
+/*
 clear.addEventListener("click", function() {
   display.textContent = "";
   num = "";
   num2 = "";
-  currentValue = "";
-  displayValue = "";
+  operator = "";
   activateButtons();
-})
+}) */
 
 
 // equals function
-equals.addEventListener("click", function() {
- //console.log(  )  
- disableButtons();
-  
-  //display.textContent = numb.value;
-})
-
-
+/*
+equals.addEventListener("click", function() { 
+  disableButtons();
+}) */
 
 
 
 
 const add = function(num, num2) {
-    return num + num2;
+    return +num + +num2;
   }
 
 
@@ -216,35 +221,40 @@ const multiply = function(num, num2) {
 
 
  const divide = function(num, num2) {
-    return num / num2;
+    if (num2 == 0) {
+      display.textContent = "Opps";
+      return "Opps";
+    }
+    else { 
+    return roundResult(num / num2);
+   }
 };
 
 
 
 
-function operate(num, num2, operator) {
+function operate(num, num2, oper) {
 
-if (operator === "+") {
+if (oper === "+") {
  return add(num, num2);
 }
 
-else if (operator === "-") {
+else if (oper === "-") {
   return subtract(num, num2);
 }
 
-else if (operator === "*") {
+else if (oper === "*") {
   return multiply(num, num2);
 }
 
-else if (operator === "/") {
+else if (oper === "/") {
   return divide(num, num2);
 }
 
 }
 
 
-
 start();  
 
-//console.log(operate(1, 2, "+"));
+
 
