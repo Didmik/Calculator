@@ -28,92 +28,7 @@ buttons.forEach(button => {
 }) 
 }
 
-
-/*function handleButtons(button) {
-
-  if (button.classList.contains('number')) {
-    if (num === "") { 
-      currentValue += button.value;
-     // console.log (currentValue);
-   console.log (display.textContent += button.value) ;
-    }
-
-   else if (num !== "" && num2 === "" && (operator === "+" || operator === "-" || 
-   operator === "*" || operator === "/" )) {
-    console.log(operator);  
-    
-    //display.textContent.slice(0, -1);
-    //num2 = display.textContent;
-    num2 = button.value;
-
-    //display.textContent = num2;
-    
-    console.log (num2);
-
-    result = operate(num, num2, operator);
-
-    display.textContent = `${num2}` + " = " + `${result}`;
-    //display.textContent = result;
-
-    //console.log(result);
-
-    //console.log(currentValue); 
-    
-   }
-
-
-   else if (num !== "" && num2 !== "" && (operator === "+" || operator === "-" || 
-   operator === "*" || operator === "/" )) {
-    console.log(operator);  
-    
-    //display.textContent.slice(0, -1);
-    //num2 = display.textContent;
-    num2 += button.value;
-    
-    console.log (num2);
-
-    result = operate(num, num2, operator);
-
-    display.textContent = `${num2}` + " = " + `${result}`; 
-   }
-
- }
-
-  else if (button.classList.contains('operator')) {
-
-    if (num === "" && num2 === "" && operator === "") {
-      num = display.textContent; // forrige talls verdi
-      console.log (num);
-      operator = button.value; // operator verdi
-      display.textContent = button.value;
-      }
-       
-
-    else if (num !== "" && num2 !== "" && operator !== "") {
-      num = result; // forrige talls verdi
-      console.log (num);
-      operator = button.value; // operator verdi
-      console.log (operator);
-      display.textContent = `${num}` + " " + `${operator}`; 
-    } 
-   }
-    
-  
-  else if (button.classList.contains('equals')) {
-
-    console.log (operate(num, num2, operator) );
-    display.textContent = operate(num, num2, operator);
-    disableButtons();
-  } 
-
-   else if (button.classList.contains('clear')) {
-    display.textContent = "";
-    num = "";
-    num2 = "";
-    operator = "";
-    activateButtons();
-  } 
-} */
+start();  
 
 
 
@@ -122,33 +37,35 @@ function handleButtons(button) {
   if (button.classList.contains('number')) {
     if (operator === "") {
       num += button.value;
-    } else {
+    } 
+    else {
       num2 += button.value;
     }
     display.textContent += button.value;
   } 
   
   else if (button.classList.contains('operator')) {
-    if (num !== "" && num2 !== "") {
+    if (num2 !== "") {
       result = operate(num, num2, operator);
-      display.textContent = `${result} ${button.value}`;
       num = result;
       num2 = "";
-    } else {
+      display.textContent = num;
+    } 
       operator = button.value;
       display.textContent += ` ${operator} `;
-    }
   } 
   
   else if (button.classList.contains('equals')) {
     if (num !== "" && num2 !== "" && operator !== "") {
       result = operate(num, num2, operator);
-      display.textContent = result;
       num = result;
       num2 = "";
       operator = "";
+      display.textContent = num;
     }
-  } else if (button.classList.contains('clear')) {
+  } 
+  
+  else if (button.classList.contains('clear')) {
     display.textContent = "";
     num = "";
     num2 = "";
@@ -235,26 +152,22 @@ const multiply = function(num, num2) {
 
 function operate(num, num2, oper) {
 
-if (oper === "+") {
- return add(num, num2);
-}
-
-else if (oper === "-") {
-  return subtract(num, num2);
-}
-
-else if (oper === "*") {
-  return multiply(num, num2);
-}
-
-else if (oper === "/") {
-  return divide(num, num2);
-}
-
+  if (oper === "+") {
+   return add(num, num2);
+  }
+  else if (oper === "-") {
+    return subtract(num, num2);
+  }
+  else if (oper === "*") {
+    return multiply(num, num2);
+  }
+  else if (oper === "/") {
+    return divide(num, num2);
+  }
 }
 
 
-start();  
+
 
 
 
